@@ -20,6 +20,7 @@
     <div id="debug11"></div>
     <div id="debug12"></div>
     <div id="debug13"></div>
+    <div id="debug14"></div>
 
     <script>
         debug.innerText = 'OK';
@@ -88,6 +89,12 @@
         });
         // var dataList4 = data4.filter( x => x % 2 == 0 );
         debug13.innerText = dataList4.toString();
+
+        // array1.concat(array2, array3, ...); : 合併, [array1, array2, array3, ...]
+        var evenData = [0, 2, 4, 6, 8];
+        var oddData = [1, 3, 5, 7, 9];
+        var data5 = evenData.concat(oddData);
+        debug14.innerText = data5.toString();
     </script>
 </body>
 </html>
