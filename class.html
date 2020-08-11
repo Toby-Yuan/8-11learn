@@ -55,9 +55,14 @@
             makeSound(){
                 alert("Animal: ...");
             }
+
+            move(step){
+                alert("It walk " + step + " steps");
+            }
         }
         let obj2 = new Animal();
         obj2.makeSound();
+        obj2.move(6);
     </script>
 </body>
 </html>
