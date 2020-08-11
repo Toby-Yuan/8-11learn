@@ -9,6 +9,7 @@
     <div id="debug"></div>
     <div id="debug2"></div>
     <div id="debug3"></div>
+    <div id="debug4"></div>
 
     <script>
         // 類別裡面也可以放入函示並且呼叫
@@ -23,7 +24,7 @@
         debug.innerHTML = obj.firstName + "<br>";
         obj.seyHello();
 
-        // JSON : array + class
+        // JSON : array + 資料
         var objArray = [
             {"firstName":"Derek","lastName":"Jeter"},
             {"firstName":"Jeremy","lastName":"Lin"},
@@ -36,6 +37,19 @@
         // 匯入成JSON格式, 字串 --> JSON
         var objArray2 = JSON.parse(s);
         debug3.innerHTML = objArray2[2].lastName + "<br>";
+
+        // 函式也可以變成陣列
+        function Box(){
+            this.color = 'black';
+            this.paint = function (value) {
+                this.color = value;
+            }
+        };
+        var objBox = new Box();
+        objBox.paint("Blue");
+        debug4.innerHTML = objBox.color;
+
+        
     </script>
 </body>
 </html>
