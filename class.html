@@ -7,6 +7,8 @@
 </head>
 <body>
     <div id="debug"></div>
+    <div id="debug2"></div>
+    <div id="debug3"></div>
 
     <script>
         // 類別裡面也可以放入函示並且呼叫
@@ -20,6 +22,20 @@
 
         debug.innerHTML = obj.firstName + "<br>";
         obj.seyHello();
+
+        // JSON : array + class
+        var objArray = [
+            {"firstName":"Derek","lastName":"Jeter"},
+            {"firstName":"Jeremy","lastName":"Lin"},
+            {"firstName":"Lionel","lastName":"Messi"}
+        ];
+        // 輸出成字串樣式, JSON --> 字串
+        debug2.innerText = JSON.stringify(objArray);
+    
+        var s = '[{"firstName":"Derek","lastName":"Jeter"},{"firstName":"Jeremy","lastName":"Lin"},{"firstName":"Lionel","lastName":"Messi"}]';
+        // 匯入成JSON格式, 字串 --> JSON
+        var objArray2 = JSON.parse(s);
+        debug3.innerHTML = objArray2[2].lastName + "<br>";
     </script>
 </body>
 </html>
