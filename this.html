@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            padding: 50px;
+            border: 1px solid gray;
+            background-color: lightgreen;
+        }
+        #letter {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            background-color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <div id="debug"></div>
+    <div id="debug2"></div>
+    <div id="box">
+        <div id="letter">Letter</div>
+    </div>
+    <div id="debug3"></div>
+    <div id="debug4"></div>
+
+    <script>
+        // this 指向「以 new 建立的新物件」
+    
+        function Box() {
+            this.color = "black";
+        }
+        
+        var box1 = new Box();
+        var box2 = new Box();
+        box2.color = "red";
+
+        debug.innerText = box1.color + ", " + box2.color;
+
+        // this 指向「使用該函式的物件」
+        
+        function showFullName() {
+            debug2.innerHTML += this.firstName + " " + this.lastName + "<br>";
+        }
+        
+        var chien = {
+            firstName: "Wolfgang",
+            lastName: "Chien",
+            toString: showFullName
+        }
+        
+        var lin = {
+            firstName: "Jeremy",
+            lastName: "Lin",
+            toString: showFullName
+        }
+        
+        lin.toString();
+        chien.toString();
+
+        // 正在處理事件的
+        // capture phrase: 由外而內
+        document.addEventListener("click", function (e) {
+            debug3.innerHTML += "document click (capture): "
+                + "event.target.id: " + e.target.id + ", "
+                + "event.target.tagName: " + e.target.tagName + ", "
+                + "this id: " + this.id + ", "
+                + "this tagName: " + this.tagName
+                + "<br>"
+        }, true);
+
+        box.addEventListener("click", function (e) {
+            debug3.innerHTML += "box click (capture): "
+                + "event.target.id: " + e.target.id + ", "
+                + "event.target.tagName: " + e.target.tagName + ", "
+                + "this id: " + this.id + ", "
+                + "this tagName: " + this.tagName
+                + "<br>"
+        }, true);
+
+        letter.addEventListener("click", function (e) {
+            debug3.innerHTML += "letter click (capture): "
+                + "event.target.id: " + e.target.id + ", "
+                + "event.target.tagName: " + e.target.tagName + ", "
+                + "this id: " + this.id + ", "
+                + "this tagName: " + this.tagName
+                + "<br>"
+        }, true);
+
+
+
+        // bubble phrase: 由內而外
+        document.addEventListener("click", function (e) {
+            debug3.innerHTML += "document click (bubble): "
+                + "event.target.id: " + e.target.id + ", "
+                + "event.target.tagName: " + e.target.tagName + ", "
+                + "this id: " + this.id + ", "
+                + "this tagName: " + this.tagName
+                + "<br>"
+        }, false);
+
+        box.addEventListener("click", function (e) {
+            debug3.innerHTML += "box click (bubble): "
+                + "event.target.id: " + e.target.id + ", "
+                + "event.target.tagName: " + e.target.tagName + ", "
+                + "this id: " + this.id + ", "
+                + "this tagName: " + this.tagName
+                + "<br>"
+        }, false);
+
+        letter.addEventListener("click", function (e) {
+            debug3.innerHTML += "letter click (bubble): "
+                + "event.target.id: " + e.target.id + ", "
+                + "event.target.tagName: " + e.target.tagName + ", "
+                + "this id: " + this.id + ", "
+                + "this tagName: " + this.tagName
+                + "<br>"
+        }, false);
+
+        // 在被宣告後的this, 經過函式之後可能會忘記自己是誰
+        class Creature {
+            constructor(weightvalue = 1) {
+                this.name = "cicada";
+            }
+            makeSound() {
+                console.log(this.name);
+                const _this = this; // 重新宣告就可以, 箭頭函式也可以解決
+                setTimeout(function () {
+                    console.log(_this.name);  // 只有這行會失敗
+                }, 1000)
+            }
+        }
+        const obj = new Creature();
+        obj.makeSound();
+
+        // 單純的函式呼叫，不是物件.方法()這種型式
+        // this 指向「全域物件(window, GLOBAL)」
+        
+        function showLocation() {
+            debug4.innerText = this.location;  // 現在的位址(網址)
+        }
+        
+        showLocation();
+
+        // use strict : 嚴格模式, 所有變數要經過宣告 --> this失效
+        "use strict";
+
+        function showLocation () {
+            // console.log(this);  // undefined
+            debug.innerText = this.location;
+        } 
+        showLocation();  
+
+        // 解決方法 : 本物件綁定window, 或箭頭函式
+        // var showLocation = function () {
+        //     console.log(this);
+        //     debug.innerText = this.location;
+        // } 
+        // showLocation = showLocation.bind(window);
+        // showLocation();
+    </script>
+</body>
+</html>
