@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="debug"></div>
+    <div id="debug1"></div>
+    <div id="debug2"></div>
+    <div id="debug3"></div>
+    <div id="debug4"></div>
+    <div id="debug5"></div>
+    <div id="debug6"></div>
+    <div id="debug7"></div>
+    <div id="debug8"></div>
+    <div id="debug9"></div>
+    <div id="debug10"></div>
+
+    <script>
+        debug.innerText = 'OK';
+
+        var data = [0, 1, 2];
+        debug1.innerText = data.length;
+
+        data.push(3);
+        debug2.innerText = data[0];
+        // [0, 1, 2, 3]
+
+        debug3.innerText = data.toString();
+        debug4.innerText = data.join(" | ");
+
+        data.shift();
+        debug5.innerText = data.join(" | ");
+        // [1, 2, 3]
+
+        data.unshift("A");
+        debug6.innerText = data.join(" | ");
+        // [A, 1, 2, 3]
+
+        data.splice(2, 1, 9, 6);
+        debug7.innerText = data.join(" | ");
+        // [A, 1, 9, 6, 3]
+
+        data.splice(2, 1);
+        debug8.innerText = data.join(" | ");
+        // [A, 1, 6, 3]
+
+        data.splice(2, 0, "B");
+        debug9.innerText = data.join(" | ");
+        // [A, 1, B, 6, 3]
+
+        data.pop();
+        debug10.innerText = data.join(" | ");
+        // [A, 1, B, 6]
+    </script>
+</body>
+</html>
