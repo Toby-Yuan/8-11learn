@@ -51,6 +51,26 @@
 
         // class : 很像function
         class Animal {
+            // constructor : 在new時就會執行一次, 用於初始化
+            constructor() {
+                // 加上_比較像是告訴大家不要用
+                this._weight = 1;
+            }
+
+            // get, set 通常是一組
+            // get : 獲取資料
+            get weight(){
+                return this._weight;
+            }
+
+            // set : 設定資料的值
+            set weight(value){
+                alert(value);
+                if (value > 0){
+                    this._weight = value;
+                }
+            }
+
             // 不用加上function
             makeSound(){
                 alert("Animal: ...");
@@ -63,6 +83,9 @@
         let obj2 = new Animal();
         obj2.makeSound();
         obj2.move(6);
+        obj2.weight = 100;
+        obj2.weight = -3;
+        alert(obj2.weight);
     </script>
 </body>
 </html>
