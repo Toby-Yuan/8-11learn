@@ -19,6 +19,7 @@
     <div id="debug10"></div>
     <div id="debug11"></div>
     <div id="debug12"></div>
+    <div id="debug13"></div>
 
     <script>
         debug.innerText = 'OK';
@@ -73,7 +74,20 @@
         var dataList3 = data3.map(function(x){
             return x += 10;
         });
+        // var dataList3 = data3.map( (x) => {
+        //     return x += 10;
+        // });
+        // 當函式內只有一行, 可以縮減成一行
+        // var dataList3 = data3.map( x => x + 10 );
         debug12.innerText = dataList3.toString();
+
+        // .filter(function); : 篩選
+        var data4 = [3, 0, 1, 8, 7, 2, 5, 4, 9, 6];
+        var dataList4 = data4.filter(function (x){
+            return x%2 == 0;
+        });
+        // var dataList4 = data4.filter( x => x % 2 == 0 );
+        debug13.innerText = dataList4.toString();
     </script>
 </body>
 </html>
