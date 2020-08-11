@@ -17,6 +17,8 @@
     <div id="debug8"></div>
     <div id="debug9"></div>
     <div id="debug10"></div>
+    <div id="debug11"></div>
+    <div id="debug12"></div>
 
     <script>
         debug.innerText = 'OK';
@@ -57,6 +59,21 @@
         data.pop();
         debug10.innerText = data.join(" | ");
         // [A, 1, B, 6]
+
+        // .forEach(function); : 針對陣列的遞迴
+        var data2 = [3, 0, 1, 8, 7, 2, 5, 4, 9, 6];
+        var sum = 0;
+        data2.forEach(function(x){
+            return sum += x;
+        });
+        debug11.innerText = sum;
+
+        // .map(function); : 針對陣列裡每一項
+        var data3 = [3, 0, 1, 8, 7, 2, 5, 4, 9, 6];
+        var dataList3 = data3.map(function(x){
+            return x += 10;
+        });
+        debug12.innerText = dataList3.toString();
     </script>
 </body>
 </html>
