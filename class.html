@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="debug"></div>
+
+    <script>
+        // 類別裡面也可以放入函示並且呼叫
+        // this --> 本人, 本身, 看綁在誰身上
+        var obj = {};
+        obj.firstName = "YUAN";
+        obj.lastName = "Toby";
+        obj.seyHello = function (){
+            debug.innerHTML += `Hellow! ${this.lastName} <br>`;
+        };
+
+        debug.innerHTML = obj.firstName + "<br>";
+        obj.seyHello();
+    </script>
+</body>
+</html>
